@@ -16,12 +16,7 @@ use Data::Dump qw(dump);
 #------------------------------------------------------------------------------
 # store the ISOcat mapping in a global hash (i.e. can be used in whole script)
 #------------------------------------------------------------------------------
-my ( $file, %xmlSchemas, %schemaNames, %lookupTableGlob );
-
-#------------------------------------------------------------------------------
-# store the ISOcat mapping in a global hash
-#------------------------------------------------------------------------------
-my %lookup_table_labels = ();
+my ( $file, %xmlSchemas, %schemaNames, %lookupTableGlob, %lookup_table_labels  );
 
 sub new 
 {
@@ -116,20 +111,20 @@ sub store_schema_names_in_hash
 #----------------------------------------------
 sub extract_xsl
 {
-  my ( $self, $xmlSchema ) = @_;
+	my ( $self, $xmlSchema ) = @_;
 
-  my $curl_cache = WWW::Curl::Easy->new({timeout => '999999999'});
-  my $curl = WWW::Curl::Easy->new({timeout => '999999999'});
+	my $curl_cache = WWW::Curl::Easy->new({timeout => '999999999'});
+	my $curl = WWW::Curl::Easy->new({timeout => '999999999'});
 
-  my @authHeader = ('Accept: text/csv', 'Content-Type: text/csv');
+	my @authHeader = ('Accept: text/csv', 'Content-Type: text/csv');
 
 	my $outFile = extract_xml_schema_clean(undef, $xmlSchema);
 
 	my $lookupFile = $outFile; 
-	
+
 	$outFile = "indexSchemas/" . $outFile . ".xsl";
-  check_not_dir(undef, "indexSchemas"); 
-  
+	check_not_dir(undef, "indexSchemas"); 
+
 	my %lookupTable = ();
 
 	my $url = "http://yago.meertens.knaw.nl/SchemaParser/indexTypes?schemaReference=" . $xmlSchema;
@@ -172,7 +167,7 @@ sub extract_xsl
 
 		# judge result and next action based on $response_code
 		my @lines = split(/\n/, $response_body);
-		
+	
 		# write the mapping to a lookup file, note: lots of heuristics
 		check_not_dir(undef, "mapping"); 
 		open(MAP, "> mapping/$lookupFile.csv") or die("Could not open, $!");
@@ -283,7 +278,7 @@ sub extract_xsl
 									<field name="schemaLocation">
 									<xsl:value-of select="@schemaLocation"/>
 									</field>
-									
+								
 									<field name="schemaName">
 									<xsl:text>' . $schemaNames{$xmlSchema} . '</xsl:text>
 									</field>									
@@ -315,27 +310,27 @@ sub extract_xsl
 					{
 						;
 					}
-          elsif($isocatno eq "MdCreationDate") 
-          {
-            print OUT '	<field name="MdCreationDate">
-                <xsl:value-of select="normalize-space(replace(., \'^.*\s*(\d{4}-\d{2}-\d{2}).*\', \'$1\'))"/>
-                <xsl:text>T00:00:00Z</xsl:text>
-            </field>';
-            print OUT "\n";
-          }					
+		  elsif($isocatno eq "MdCreationDate") 
+		  {
+			print OUT '	<field name="MdCreationDate">
+				<xsl:value-of select="normalize-space(replace(., \'^.*\s*(\d{4}-\d{2}-\d{2}).*\', \'$1\'))"/>
+				<xsl:text>T00:00:00Z</xsl:text>
+			</field>';
+			print OUT "\n";
+		  }					
 					# Insert regular templates
 					else 
 					{
 						if($isocatno ne "MdCollectionDisplayName") 
 						{
-              print OUT '<xsl:choose>
-                        <xsl:when test="count(descendant::*) != 0">
-                          <field name="' . $isocatno .'"><xsl:value-of select="normalize-space(string-join(descendant::*, \' \'))"/></field>
-                        </xsl:when>
-                        <xsl:otherwise>
-                          <field name="' . $isocatno .'"><xsl:value-of select="normalize-space(.)"/></field>
-                        </xsl:otherwise>
-                        </xsl:choose>';
+			  print OUT '<xsl:choose>
+						<xsl:when test="count(descendant::*) != 0">
+						  <field name="' . $isocatno .'"><xsl:value-of select="normalize-space(string-join(descendant::*, \' \'))"/></field>
+						</xsl:when>
+						<xsl:otherwise>
+						  <field name="' . $isocatno .'"><xsl:value-of select="normalize-space(.)"/></field>
+						</xsl:otherwise>
+						</xsl:choose>';
 						}
 					}
 				}
@@ -379,7 +374,7 @@ sub extract_xsl
 	else {
 		# Error code, type of error, error message
 		print("An error happened: $retcode ".$curl->strerror($retcode)." ".$curl->errbuf."\n");
-		
+	
 		# perhaps it should die here, but I have not set it because the XML schema parser is a bit buggy and I want to continue index something
 		# die("Profile could not be extracted by the XML schema parser. Check out why not!\n");
 	}
