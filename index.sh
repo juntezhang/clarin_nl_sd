@@ -1,10 +1,10 @@
 #!/bin/bash
-#@----------------------------------------------------------------
-#@ Copyright 2013 by Junte Zhang <juntezhang@gmail.com>
+#@--------------------------------------------------------------------------------
+#@ By Junte Zhang <juntezhang@gmail.com> in 2013
 #@ Distributed under the GNU General Public Licence
 #@
 #@ This shell script automates the CMDI MI indexing procedure 
-#@----------------------------------------------------------------
+#@---------------------------------------------------------------------------------
 
 # store start time
 START=$(date +%s)
@@ -148,6 +148,9 @@ case $1 in
       echo "";
     fi
      ;;
+  #-----------------------------------------------------------------------
+  # --help: print out instructions on how to use this script 
+  #-----------------------------------------------------------------------          
    "--help"|"-h")
     echo "";
     echo "Usage: $0 [arguments]";
@@ -157,6 +160,9 @@ case $1 in
     printf "\t%-20s\t%-20s\n" "--all or -a" "do it all at once";
     echo "";   
      ;;     
+  #--------------------------------------------------------------
+  # catch all: print out instructions
+  #--------------------------------------------------------------          
    *) 
     echo "";
     echo "Please provide a parameter.";

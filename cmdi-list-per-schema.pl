@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
-#@----------------------------------------------------------------------------------------------------------------------
-#@ Copyright 2012 by Junte Zhang <juntezhang@gmail.com>
+#@---------------------------------------------------------------------------------------------------------------------------------------------
+#@ By Junte Zhang <juntezhang@gmail.com> in 2013
 #@ Distributed under the GNU General Public Licence
 #@
 #@ This script creates lists of CMDI files and stores it in an XML for processing by an XSLT for each CMDI profile.
@@ -8,7 +8,7 @@
 #@ Two step approach:
 #@   1) create a file list per profile 
 #@   2) append XML prolog and root tags
-#@----------------------------------------------------------------------------------------------------------------------
+#@---------------------------------------------------------------------------------------------------------------------------------------------
 use IndexCMDI; # plugin reference to Package file
 
 # creating a new object of class IndexCMDI

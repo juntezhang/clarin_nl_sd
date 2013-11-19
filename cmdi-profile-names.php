@@ -1,10 +1,10 @@
 <?php
-#@--------------------------------------------------------------------------
-#@ Copyright 2013 by Junte Zhang <juntezhang@gmail.com>
+#@--------------------------------------------------------------------------------------
+#@ By Junte Zhang <juntezhang@gmail.com> in 2013
 #@ Distributed under the GNU General Public Licence
 #@
 #@ This script extracts the CMDI profile names for display purposes
-#@--------------------------------------------------------------------------
+#@--------------------------------------------------------------------------------------
 $data = file_get_contents("./schemas.tmp");
 $schemas_arr = explode("\n", $data);
 

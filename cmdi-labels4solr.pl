@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 #@--------------------------------------------------------------------------
-#@ Copyright 2012 by Junte Zhang <juntezhang@gmail.com>
+#@ By Junte Zhang <juntezhang@gmail.com> in 2013
 #@ Distributed under the GNU General Public Licence
 #@
 #@ This script creates a Solr schema.xml file

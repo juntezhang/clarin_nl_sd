@@ -1,10 +1,10 @@
 #!/usr/bin/perl -w
-#@-------------------------------------------------------------------------------
-#@ Copyright 2012 by Junte Zhang <juntezhang@gmail.com>
+#@---------------------------------------------------------------------------------------------------
+#@ By Junte Zhang <juntezhang@gmail.com> in 2013
 #@ Distributed under the GNU General Public Licence
 #@
 #@ This script generates XSLT on-the-fly to map CMDI files to Solr XML format
-#@-------------------------------------------------------------------------------
+#@---------------------------------------------------------------------------------------------------
 use IndexCMDI; # plugin reference to Package file
 use Data::Dumper;
 

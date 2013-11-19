@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 #@-----------------------------------------------------------------------------
-#@ Copyright 2013 by Junte Zhang <juntezhang@gmail.com>
+#@ By Junte Zhang <juntezhang@gmail.com> in 2013
 #@ Distributed under the GNU General Public Licence
 #@
 #@ IndexCMDI class for the CMDI MI indexing process 
@@ -13,9 +13,9 @@ use warnings;
 use WWW::Curl::Easy;
 use Data::Dump qw(dump);
 
-#------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------
 # store the ISOcat mapping in a global hash (i.e. can be used in whole script)
-#------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------
 my ( $file, %xmlSchemas, %schemaNames, %lookupTableGlob, %lookup_table_labels  );
 
 sub new 

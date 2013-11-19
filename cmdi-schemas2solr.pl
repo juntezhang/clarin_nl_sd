@@ -1,10 +1,10 @@
 #!/usr/bin/perl -w
-#@--------------------------------------------------------------------------
-#@ Copyright 2012 by Junte Zhang <juntezhang@gmail.com>
+#@---------------------------------------------------------------------------------------------
+#@ By Junte Zhang <juntezhang@gmail.com> in 2013
 #@ Distributed under the GNU General Public Licence
 #@
 #@ This script creates a Solr schema.xml file from multiple XML schemas
-#@--------------------------------------------------------------------------
+#@---------------------------------------------------------------------------------------------
 use IndexCMDI; # plugin reference to Package file
 use Data::Dumper;
 
@@ -18,7 +18,8 @@ my %xmlSchemas = $object->store_xml_schemas_in_hash("schemasNames.tmp");
 my %schemaNames = $object->store_schema_names_in_hash("schemasNames.tmp");
 
 # extract schema information to a global hash
-foreach my $schema (keys %xmlSchemas) {
+foreach my $schema (keys %xmlSchemas) 
+{
 	$object->extract_schema_to_hash($schema);
 }
 
