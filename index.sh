@@ -119,7 +119,8 @@ case $1 in
     time perl $cmdi2schema
        
     #break off NOW if this step fails!!!
-    if [ "$?" -eq "0" ]; then
+    if [ "$?" -eq "0" ]
+    then
       # create a schema.xml
       echo "Compiling the Lucene schema.xml file...(5/9)"
       time perl $schema2solr > $schema
